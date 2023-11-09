@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace = "com.example.viewmodel"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.viewmodel"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -26,9 +26,21 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        dataBinding = true;
+    }
 }
 
+
 dependencies {
+
+    // Fix Duplicated class
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
+
+    val lifecycle_version = "2.6.2"
+
+    // View Model
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
 
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.10.0")
