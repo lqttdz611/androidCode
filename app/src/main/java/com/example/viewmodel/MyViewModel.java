@@ -1,15 +1,23 @@
 package com.example.viewmodel;
 
+import android.view.View;
+
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class MyViewModel extends ViewModel {
 
-    int count=0;
-    public void increaseCount() {
-        count++;
+    private MutableLiveData<Integer> count = new MutableLiveData<>();
+
+    public void increaseCount(View view) {
+        int currentValue = count.getValue() !=null ? count.getValue() : 0;
+
+        //Increase Value by 1
+        count.setValue(currentValue+1);
     }
 
-    public int getCount() {
+    public LiveData<Integer> getCount() {
         return count;
     }
 }
